@@ -4,8 +4,8 @@ b_list = list(map(int, input().split()))
 
 ans = 0
 #시작점
-#n-m+1
-for i in range(0, 6):
+
+for i in range(n-m+1):
     temp_list = b_list[:]
     for j in range(m):
         if a_list[i+j] in temp_list:
