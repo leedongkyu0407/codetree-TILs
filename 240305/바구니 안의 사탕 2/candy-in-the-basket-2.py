@@ -4,7 +4,7 @@ maps = [0]*MAX_INT
 
 for _ in range(n):
     candy, position = map(int, input().split())
-    maps[position] = candy
+    maps[position] += candy
 
 
 max_candy = 0
@@ -15,9 +15,8 @@ for i in range(k, MAX_INT-k):
     for j in range(i-k, i+k+1):
         if maps[j]:
             sum_candy += maps[j]
-    
     if max_candy < sum_candy:
         max_candy = sum_candy
         max_idx = i
-        
+    
 print(max_candy)
