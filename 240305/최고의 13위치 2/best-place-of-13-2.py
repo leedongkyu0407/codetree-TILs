@@ -30,10 +30,11 @@ def sol(n):
 #1차 탐색 후 최댓값
 first_box = sol(n)
 #1차 탐색 결과값 격자에서 제외해주기
-rx, ry = max_idx[-1][0], max_idx[-1][1]
-for i in range(3):
-    nx, ny = rx, ry+i
-    maps[nx][ny] = 0
+if max_idx:
+    rx, ry = max_idx[-1][0], max_idx[-1][1]
+    for i in range(3):
+        nx, ny = rx, ry+i
+        maps[nx][ny] = 0
 #2차 탐색 후 최댓값
 second_box = sol(n)
 print(first_box+second_box)
