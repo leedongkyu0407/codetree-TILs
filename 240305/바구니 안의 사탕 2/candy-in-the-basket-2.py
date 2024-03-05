@@ -1,5 +1,5 @@
 n, k = map(int, input().split())
-MAX_INT = 101
+MAX_INT = 401
 maps = [0]*MAX_INT
 
 for _ in range(n):
@@ -17,6 +17,6 @@ for i in range(k, MAX_INT-k):
             sum_candy += maps[j]
     if max_candy < sum_candy:
         max_candy = sum_candy
-        max_idx = i
+        
     
 print(max_candy)
