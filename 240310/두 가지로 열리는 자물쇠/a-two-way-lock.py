@@ -20,10 +20,12 @@ def set_comb(c, n, n_circle):
             
             elif num+j == n+2:
                 tmp = n_circle[1]
-            
+            #4
+            #123
+            #234
             else: 
-                idx = (num+j)
-                tmp = n_circle[num+j]
+                idx = num+j-1
+                tmp = n_circle[idx]
 
             if tmp not in possible_comb[i]:
                 possible_comb[i].append(tmp)
