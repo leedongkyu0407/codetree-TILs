@@ -27,10 +27,10 @@ def possible_num(a, b, c, strike, ball, prev_list):
                     if k==a or k==b:
                         ball_cnt += 1
 
-                #횟수에 따라 가짓수를 줄여가기 위해 prev_list 사용
-                if str_cnt == strike and ball_cnt == ball:
-                    if len(prev_list) == 0 or [i, j, k] in prev_list:
-                        possible_list.append([i,j,k])
+                    #횟수에 따라 가짓수를 줄여가기 위해 prev_list 사용
+                    if str_cnt == strike and ball_cnt == ball:
+                        if len(prev_list) == 0 or [i, j, k] in prev_list:
+                            possible_list.append([i,j,k])
                 str_cnt, ball_cnt = 0, 0
     return possible_list
     
