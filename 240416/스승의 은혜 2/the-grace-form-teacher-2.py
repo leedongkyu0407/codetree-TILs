@@ -22,7 +22,7 @@ for i in range(n):
         if b - p >= 0:
             b -= p
             people += 1
-    print(people)
+    
     ans = max(people, ans)
 
 print(ans)
