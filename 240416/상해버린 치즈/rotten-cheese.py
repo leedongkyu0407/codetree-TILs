@@ -24,8 +24,8 @@ candidate = []
 
 #확실히 아픈 사람들을 이용해서 상할 가능성이 있는 치즈 찾기
 for i in range(s):
-        #아픈 사람(sick_p), 아픈 시간(sick_t)
-        sick_p, sick_t = sick[i]
+    #아픈 사람(sick_p), 아픈 시간(sick_t)
+    sick_p, sick_t = sick[i]
 
     for j in range(d):
         #몇번째 사람(eat_p)이 몇 번째 치즈(eat_m)를 언제 먹었는지(eat_t)
@@ -37,7 +37,7 @@ for i in range(s):
 
 #위의 정보를 바탕으로 상한 것일 확률이 있는 치즈를 먹은 다른 사람 찾기
 for k in range(d):
-    eat_p, eat_m, eat_t = eatings[i]
+    eat_p, eat_m, eat_t = eatings[k]
     if eat_m in candidate:
         medicine.add(eat_p)
 
