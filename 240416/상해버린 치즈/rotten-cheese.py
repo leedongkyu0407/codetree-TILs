@@ -41,4 +41,5 @@ for k in range(d):
     if eat_m in candidate:
         medicine.add(eat_p)
 
+print(medicine)
 print(len(medicine))
