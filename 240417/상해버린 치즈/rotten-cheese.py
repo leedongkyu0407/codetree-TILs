@@ -39,7 +39,7 @@ for l in range(d):
     eat_p, eat_m = eatings[l][0], eatings[l][1]
     #상한 치즈를 먹은 사람들 추출
     #rotten 후보군들 중 cheese record 상 모든 경우의 수에 먹었어야 하기 때문에 조건 추가
-    if (eat_m in rotten) and (rotten[eat_m] == s):
+    if (eat_m in rotten) and (rotten[eat_m] >= s):
         medicine.add(eat_p)
 
 print(len(medicine))
