@@ -12,8 +12,6 @@ for _ in range(s):
     sick_p, sick_t = map(int, input().split())
     sick.append((sick_p, sick_t))
 
-#치즈에 대해 정렬
-eatings.sort(key=lambda x : (x[1]))
 
 #각 치즈별 완전탐색
 rotten = []
@@ -27,21 +25,22 @@ for i in range(m):
             eat_p, eat_m, eat_t = eatings[k]
             if (eat_m == cheeze) and (sick_p == eat_p) and (sick_t > eat_t):
                 flag += 1
-    
+
     #아픈 사람 모두가 해당 치즈를 먹었을 경우 상했을 가능성이 있는 치즈
-    if flag == s:
+    if flag >= s:
         rotten.append(cheeze)
 
 ans = 0
 #상한 치즈를 먹은 사람들을 위한 약이 최대 몇 개나 필요한지
 for l in range(len(rotten)):
     rot = rotten[l]
-    temp = 0
+    #중복 제거를 위한 집합 자료형
+    temp = set()
     for m in range(d):
         eat_p, eat_m, eat_t = eatings[m]
         if eat_m == rot:
-            temp += 1
+            temp.add(eat_p)
     
-    ans = max(ans, temp)
+    ans = max(ans, len(temp))
 
 print(ans)
