@@ -9,9 +9,6 @@ ans = 0
 for i in range(n):
     for j in range(i+1, n):
         for k in range(j+1, n):
-            #동일 선분 선택시 제외
-            #if i == j or j==k or k==i:
-            #    continue
             #선분 point를 리스트로 표현
             lines = [0]*101
             flag = True
