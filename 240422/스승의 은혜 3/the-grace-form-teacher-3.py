@@ -8,7 +8,7 @@ for _ in range(n):
     prices_ship.append((p,s))
 
 prices_ship.sort(key=lambda x:(x[0]+x[1], x[0]))
-print(prices_ship)
+
 #선물 가능한 학생의 최대 명수
 ans = 0
 for i in range(n):
