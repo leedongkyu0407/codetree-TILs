@@ -23,5 +23,5 @@ for i in range(n):
         
         if pay > b:
             ans = max(cnt-1, ans)
-
+            break
 print(ans)
