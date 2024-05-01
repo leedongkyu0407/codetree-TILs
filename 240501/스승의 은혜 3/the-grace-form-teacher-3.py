@@ -17,12 +17,16 @@ for i in range(n):
     #쿠폰 사용할 선물
     half = prices_ship[i][0]//2 + prices_ship[i][1]
     #가격+배송비들의 합
-    price_sum = 0
-    #학생 수
-    temp_n = 0
+    if half <= b:
+        price_sum = half
+        #학생 수
+        temp_n = 1
+    else:
+        price_sum, temp_n = 0, 0
+
     for j in range(n):
         if i == j:
-            price = half
+            continue
         
         else:
             price = (prices_ship[j][0] + prices_ship[j][1])
@@ -31,7 +35,7 @@ for i in range(n):
             price_sum += price
         
             temp_n += 1
-        
+    
     max_n = max(max_n, temp_n)
 
 print(max_n)
