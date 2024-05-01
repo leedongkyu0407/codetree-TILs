@@ -6,7 +6,7 @@ for _ in range(n):
     p, s = map(int, input().split())
     prices_ship.append((p, s))
 
-prices_ship.sort()
+prices_ship.sort(key=lambda x: (x[0]+x[1]))
 #예산 초과 확인 함수
 def is_over(p, b):
     return p > b
