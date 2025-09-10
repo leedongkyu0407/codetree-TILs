@@ -11,24 +11,29 @@ public class Main {
         N = Integer.parseInt(bf.readLine());
         s = bf.readLine();
 
-        for(int i=1;i<N/2+1;i++) {
-            check(i);
-        }
-        System.out.println(ans+1);
-    }
-
-    static void check(int len) {
-        for(int i=0;i<=N-len+1;i = i+len) {
-            String temp = s.substring(i, i+len);
-            // System.out.println("i:"+i+", len:"+len+", temp1:"+temp);
-            for (int j=i+len;j<N-len+1;j++) {
-                String temp2 = s.substring(j, j+len);
-                // System.out.println("i:"+i+", j:"+j+", len:"+len+", temp1:"+temp+", temp2:"+temp2);
-                if (temp.equals(temp2)) {
-                    ans = len;
-                    return;
-                }
+        for(int i=1; i<=N; i++) {
+            if(check(i)) {
+                System.out.println(i);
+                return;
             }
         }
+    }
+
+    static boolean check(int len) {
+        Map<String, Integer> count = new HashMap<>();
+        
+        // 모든 길이 len의 부분문자열 개수 세기
+        for(int i=0; i<=N-len; i++) {
+            String temp = s.substring(i, i+len);
+            count.put(temp, count.getOrDefault(temp, 0) + 1);
+        }
+        
+        // 모든 부분문자열이 2번 미만 등장하는지 확인
+        for(int freq : count.values()) {
+            if(freq >= 2) {
+                return false;
+            }
+        }
+        return true;
     }
 }
