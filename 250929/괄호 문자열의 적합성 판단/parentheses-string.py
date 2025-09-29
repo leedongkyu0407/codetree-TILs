@@ -5,7 +5,7 @@ for i in range(len(str)):
     if(str[i] == '('):
         stack.append(str[i])
     elif(str[i] == ')'):
-        if(stack[-1] == '('):
+        if(stack):
             stack.pop()
         else:
             flag = False
