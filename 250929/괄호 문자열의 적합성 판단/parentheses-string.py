@@ -1,20 +1,18 @@
 str = input()
-list_str = list(str)
 stack = []
-
-for i in range(len(list_str)):
-    if(list_str[i] == '('):
-        stack.append(list_str[i])
-    elif(list_str[i] == ')'):
-        if(stack[-1] != '('):
-            continue
-        else:
+flag = True
+for i in range(len(str)):
+    if(str[i] == '('):
+        stack.append(str[i])
+    elif(str[i] == ')'):
+        if(stack[-1] == '('):
             stack.pop()
+        else:
+            flag = False
+            print("No")
 
-
-if(len(stack)!=0):
-    print("No")
-else:
-    print("Yes")
-
-# Please write your code here.
+if(flag):
+    if(len(stack)==0):
+        print("Yes")
+    else:
+        print("No")
