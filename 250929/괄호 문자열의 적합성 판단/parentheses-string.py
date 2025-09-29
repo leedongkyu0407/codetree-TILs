@@ -10,6 +10,7 @@ for i in range(len(str)):
         else:
             flag = False
             print("No")
+            break
 
 if(flag):
     if(len(stack)==0):
