@@ -13,7 +13,7 @@ public class Main {
             String order = st.nextToken();
             if(order.equals("push")) {
                 int tmp = Integer.parseInt(st.nextToken());
-                q.add((Integer)tmp);
+                q.add(tmp);
                 continue;
             } else if(order.equals("front")){
                 System.out.println(q.peek());
