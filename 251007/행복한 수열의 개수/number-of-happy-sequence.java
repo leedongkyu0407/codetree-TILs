@@ -32,12 +32,12 @@ public class Main {
             for (int j=0;j<N-1;j++) {
                 if (board[i][j] == board[i][j+1]) {
                     temp++;
+                }else {
+                    temp = 0;
                 }
                 if(temp == M-1) {
                     flag = true;
-                } else {
-                    temp = 0;
-                }
+                } 
             }
             if (flag == true) {
                 cntRow++;
@@ -54,11 +54,11 @@ public class Main {
             for (int j=0;j<N-1;j++) {
                 if (board[j][i] == board[j+1][i]) {
                     temp++;
+                }else {
+                    temp = 0;
                 }
                 if(temp == M-1) {
                     flag = true;
-                } else {
-                    temp = 0;
                 }
             }
             if (flag == true) {
