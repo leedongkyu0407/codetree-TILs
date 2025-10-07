@@ -43,7 +43,7 @@ public class Main {
     private static void calc() {
         for (int i=0;i<N;i++) {
             for (int j=0;j<N;j++) {
-                for (int k=0;k<N;k++) {
+                for (int k=0;k<2*(N-1);k++) {
                     int gold = calcGold(i, j, k);
                     if(gold*M >= getCost(k)) {
                         ans = Math.max(ans, gold);
