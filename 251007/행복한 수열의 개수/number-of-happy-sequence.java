@@ -19,8 +19,8 @@ public class Main {
             }
         }
         int ans = 0;
-        if (N==1) {
-            ans = 1;
+        if (M==1) {
+            ans = 2*N;
         } else {
             ans = checkRow();
             ans += checkCol();
