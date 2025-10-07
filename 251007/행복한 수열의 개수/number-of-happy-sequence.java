@@ -24,47 +24,46 @@ public class Main {
         System.out.println(ans);
     }
 
-    private static int checkRow() {
-        int cntRow = 0;
-        for (int i=0;i<N;i++) {
-            int temp = 0;
-            boolean flag = false;
-            for (int j=0;j<N-1;j++) {
-                if (board[i][j] == board[i][j+1]) {
-                    temp++;
-                }else {
-                    temp = 0;
-                }
-                if(temp == M-1) {
-                    flag = true;
-                } 
+private static int checkRow() {
+    int cntRow = 0;
+    for (int i = 0; i < N; i++) {
+        int temp = 1;
+        boolean flag = false;
+        for (int j = 0; j < N - 1; j++) {
+            if (board[i][j] == board[i][j + 1]) {
+                temp++;
+            } else {
+                temp = 1;
             }
-            if (flag == true) {
-                cntRow++;
-            }
-        }
-        return cntRow;
-    }
 
-    private static int checkCol() {
-        int cntCol = 0;
-        for (int i=0;i<N;i++) {
-            int temp = 0;
-            boolean flag = false;
-            for (int j=0;j<N-1;j++) {
-                if (board[j][i] == board[j+1][i]) {
-                    temp++;
-                }else {
-                    temp = 0;
-                }
-                if(temp == M-1) {
-                    flag = true;
-                }
-            }
-            if (flag == true) {
-                cntCol++;
+            if (temp >= M) {
+                flag = true;
             }
         }
-        return cntCol;
+        if (flag) cntRow++;
     }
+    return cntRow;
+}
+
+private static int checkCol() {
+    int cntCol = 0;
+    for (int i = 0; i < N; i++) {
+        int temp = 1;
+        boolean flag = false;
+        for (int j = 0; j < N - 1; j++) {
+            if (board[j][i] == board[j + 1][i]) {
+                temp++;
+            } else {
+                temp = 1;
+            }
+
+            if (temp >= M) {
+                flag = true;
+            }
+        }
+        if (flag) cntCol++;
+    }
+    return cntCol;
+}
+
 }
