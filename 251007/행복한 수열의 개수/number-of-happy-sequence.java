@@ -18,9 +18,13 @@ public class Main {
                 board[i][j] = Integer.parseInt(inputs.nextToken());
             }
         }
-
-        int ans = checkRow();
-        ans += checkCol();
+        int ans = 0;
+        if (N==1) {
+            ans = 1;
+        } else {
+            ans = checkRow();
+            ans += checkCol();
+        }
         System.out.println(ans);
     }
 
