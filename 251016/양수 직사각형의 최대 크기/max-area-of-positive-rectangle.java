@@ -4,7 +4,7 @@ import java.io.*;
 public class Main {
     static int[][] grid;
     static int n, m;
-    static int ans = 0;
+    static int ans = -1;
     static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
@@ -12,10 +12,7 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
         grid = new int[n][m];
-        if (n==1 && m==1){
-            System.out.println(-1);
-            return;
-        }
+        
         for (int i=0;i<n;i++) {
             StringTokenizer inputs = new StringTokenizer(bf.readLine());
             for (int j=0;j<m;j++) {
@@ -39,7 +36,7 @@ public class Main {
     private static int isPositive(int x, int y, int x2, int y2) {
         for(int i=x;i<=x2;i++) {
             for (int j=y;j<=y2;j++) {
-                if (grid[i][j]<0) {
+                if (grid[i][j]<=0) {
                     return -1;
                 }
             }
