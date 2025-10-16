@@ -12,7 +12,10 @@ public class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
         grid = new int[n][m];
-
+        if (n==1 && m==1){
+            System.out.println(-1);
+            return;
+        }
         for (int i=0;i<n;i++) {
             StringTokenizer inputs = new StringTokenizer(bf.readLine());
             for (int j=0;j<m;j++) {
