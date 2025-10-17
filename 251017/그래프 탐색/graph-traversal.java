@@ -1,16 +1,17 @@
 import java.util.*;
 public class Main {
-    static List<List<Integer>> graph = new ArrayList<>();
+    static ArrayList<Integer>[] graph;    
     static int n, m; 
     static boolean[] visited;
-    static int ans = 0;
+    static int ans = 0, count=0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         m = sc.nextInt();
-        for(int i=0;i<=n;i++) {
-            graph.add(new ArrayList<Integer>());
+        graph = new ArrayList[n + 1];  
+        for(int i = 0; i <= n; i++) {
+            graph[i] = new ArrayList<>();
         }
 
         visited = new boolean[n+1];
@@ -18,8 +19,8 @@ public class Main {
         for (int i = 0; i < m; i++) {
             a = sc.nextInt();
             b = sc.nextInt();
-            graph.get(a).add(b);
-            graph.get(b).add(a);
+            graph[a].add(b);  
+            graph[b].add(a);
         }
 
         visited[1] = true;
@@ -32,12 +33,13 @@ public class Main {
         System.out.println(ans);
     }
 
-    private static void dfs(int start) {
-        for (int i=1;i<=graph.get(start).size();i++) {
-            int tmp = graph.get(start).get(i-1);
-            if(!visited[tmp]) {
-                visited[tmp] = true;
-                dfs(tmp);
+    private static void dfs(int cur) {
+
+        for (int next : graph[cur]) {  
+            if (!visited[next]) {
+                visited[next] = true;
+                count++;
+                dfs(next);
             }
         }
     }
