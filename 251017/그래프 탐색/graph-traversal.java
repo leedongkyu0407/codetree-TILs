@@ -22,6 +22,7 @@ public class Main {
             graph.get(b).add(a);
         }
 
+        visited[1] = true;
         dfs(1);
         for(int i=2;i<=n;i++) {
             if (visited[i]) {
