@@ -3,7 +3,7 @@ public class Main {
     static ArrayList<Integer>[] graph;    
     static int n, m; 
     static boolean[] visited;
-    static int ans = 0, count=0;
+    static int ans = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -24,23 +24,20 @@ public class Main {
         }
 
         visited[1] = true;
-        dfs(1);
-        for(int i=2;i<=n;i++) {
-            if (visited[i]) {
-                ans++;
-            }
-        }
+        int ans = dfs(1);
+
         System.out.println(ans);
     }
 
-    private static void dfs(int cur) {
-
+    private static int dfs(int cur) {
+        int count = 0;
         for (int next : graph[cur]) {  
             if (!visited[next]) {
                 visited[next] = true;
                 count++;
-                dfs(next);
+                count += dfs(next);
             }
         }
+        return count;
     }
 }
