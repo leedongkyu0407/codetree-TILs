@@ -39,22 +39,19 @@ public class Main {
             idx = 1;
         }
 
+        int now = idx;
+
         for(int i=row;i>=1;i--) {
             if (spreadUp(i)==false) break;
-            idx = (idx+1)%2;
-            move(i-1, d[idx]);
+            now = (now+1)%2;
+            move(i-1, d[now]);
         }
 
-        if (dir.equals("L")) {
-            idx = 0;
-        } else {
-            idx = 1;
-        }
-
+        now = idx;
         for(int i=row;i<n-1;i++) {
             if (spreadDown(i)==false) break;
-            idx = (idx+1)%2;
-            move(i+1, d[idx]);
+            now = (now+1)%2;
+            move(i+1, d[now]);
         }
     }
 
