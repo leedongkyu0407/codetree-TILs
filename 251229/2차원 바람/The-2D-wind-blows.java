@@ -31,7 +31,7 @@ public class Main {
                 queries[i][j] = Integer.parseInt(inputs.nextToken())-1;
             }
         }
-        
+
         for (int i=0;i<q;i++) {
             simul(queries[i]);
         }
@@ -58,6 +58,7 @@ public class Main {
         // System.out.println("rotate: "+Arrays.deepToString(building));
         copy();
         avg(x1, y1, x2, y2);
+        copy();
     }
 
     private static void copy() {
