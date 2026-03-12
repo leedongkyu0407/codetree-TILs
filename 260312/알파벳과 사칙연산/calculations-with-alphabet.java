@@ -7,7 +7,7 @@ public class Main {
     private static List<Character> varList;
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     private static String expression;
-    private static int ans = 0;
+    private static int ans = Integer.MIN_VALUE;
 
     public static void main(String[] args) throws IOException{
         expression = bf.readLine();
