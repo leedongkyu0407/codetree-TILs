@@ -12,7 +12,7 @@ public class Main {
         StringTokenizer st = new StringTokenizer(bf.readLine());
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
-        ladders = new int[m+1][n+1];
+        ladders = new int[16][n+1];
         ans = m;
 
         for(int i = 0; i < m; i++){
@@ -33,7 +33,7 @@ public class Main {
         int[] res = new int[n+1];
         for(int i=1;i<=n;i++) {
             int pos = i;
-            for (int j=1;j<=m;j++) {
+            for (int j=1;j<16;j++) {
                 if(ladders[j][pos]!=0) {
                     pos += ladders[j][pos];
                 }
@@ -53,10 +53,11 @@ public class Main {
     }
 
     private static void backtrack(int depth, int removed) {
+
         if (depth == m) {
             int[] current = simul();
             if (isSame(current)) {
-                ans = Math.min(ans, m-removed);
+                ans = Math.min(ans, m-removed);                
             }    
             return;
         }
