@@ -37,7 +37,7 @@ public class Main {
         int len = s.length();
         for(int i=1;i<len/2+1;i++) {
             String last = s.substring(len-i);
-            String prev = s.subString(len-(i*2), len-i);
+            String prev = s.substring(len-(i*2), len-i);
             if (last.equals(prev)) {
                 return false;
             }
