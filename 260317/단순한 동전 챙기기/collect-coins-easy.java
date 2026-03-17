@@ -5,10 +5,9 @@ public class Main {
 
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     private static int n, ans, startX, startY, endX, endY;
-    private static List<int[]> coinPos = new ArrayList<>();
-    private static List<int[]> al = new ArrayList<>();
-    
-    private static int coins = 0;
+    private static Map<Integer, int[]> coinMaps = new HashMap<>();
+    private static List<Integer> selected = new ArrayList<>();
+    private static List<Integer> coinNums = new ArrayList<>();
 
     public static void main(String[] args) throws IOException{
         n = Integer.parseInt(bf.readLine());
@@ -26,15 +25,17 @@ public class Main {
                         endY = j;
                     } else {
                         int tmp = c - '0';
-                        coinPos.add(new int[]{i, j});
-                        coins++;
+                        coinMaps.put(tmp, new int[]{i, j});
+                        coinNums.add(tmp);
                     }
                 }
             }                
         }
 
+        Collections.sort(coinNums);
+
         ans = Integer.MAX_VALUE;
-        if (coins >= 3) {
+        if (coinNums.size() >= 3) {
             comb(0, 0);
         }
 
@@ -45,17 +46,17 @@ public class Main {
     }
 
     private static void comb(int depth, int cnt) {
-        if (depth == coins) {
+        if (depth == coinNums.size()) {
             if (cnt == 3) {
                 int distance = 0;
                 int x = startX;
                 int y = startY;
 
-                for (int i=0;i<al.size();i++) {
-                    int[] next = al.get(i);
-                    distance += calcDist(x, y, next[0], next[1]);
-                    x = al.get(i)[0];
-                    y = al.get(i)[1]; 
+                for (int num : selected) {
+                    int[] pos = coinMaps.get(num);
+                    distance += calcDist(x, y, pos[0], pos[1]);
+                    x = pos[0];
+                    y = pos[1]; 
                 }
                 distance += calcDist(endX, endY, x, y); 
                 ans = Math.min(ans, distance);
@@ -63,14 +64,13 @@ public class Main {
             return;
         }
 
-        if (3-cnt > coins-depth) {
+        if (3-cnt > coinNums.size()-depth) {
             return;
         }
 
-        int[] now = coinPos.get(depth);
-        al.add(now);
+        selected.add(coinNums.get(depth));
         comb(depth+1, cnt+1);
-        al.remove(al.size()-1);
+        selected.remove(selected.size()-1);
 
         comb(depth+1, cnt);
     }
