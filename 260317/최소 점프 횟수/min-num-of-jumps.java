@@ -29,7 +29,7 @@ public class Main {
         }
 
         for(int i=1;i<=maxJump[pos];i++) {
-            if (pos > n-1) continue;
+            if (pos+i > n-1) continue;
             perm(pos+i, cnt+1);
         }
     }
