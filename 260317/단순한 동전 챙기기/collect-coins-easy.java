@@ -5,14 +5,13 @@ public class Main {
 
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     private static int n, ans, startX, startY, endX, endY;
-    private static int[][] pos;
-    private static Map<Integer, int[]> nums = new HashMap<>();
+    private static List<int[]> coinPos = new ArrayList<>();
     private static List<int[]> al = new ArrayList<>();
+    
     private static int coins = 0;
 
     public static void main(String[] args) throws IOException{
         n = Integer.parseInt(bf.readLine());
-        pos = new int[n][2];
 
         for (int i = 0; i < n; i++) {
             String input = bf.readLine();
@@ -27,7 +26,7 @@ public class Main {
                         endY = j;
                     } else {
                         int tmp = c - '0';
-                        nums.put(tmp, new int[]{i, j});
+                        coinPos.add(new int[]{i, j});
                         coins++;
                     }
                 }
@@ -68,8 +67,7 @@ public class Main {
             return;
         }
 
-        int[] now = nums.get(depth+1);
-        // System.out.println(now);
+        int[] now = coinPos.get(depth);
         al.add(now);
         comb(depth+1, cnt+1);
         al.remove(al.size()-1);
