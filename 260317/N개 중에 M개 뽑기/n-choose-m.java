@@ -12,20 +12,23 @@ public class Main {
         StringTokenizer st = new StringTokenizer(bf.readLine());
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
-        sol();
+        comb(0, 1);
         System.out.println(sb.toString());
     }
 
-    private static void sol() {
-        for(int i=0;i<(1<<n);i++) {
-            if (Integer.bitCount(i) == m) {                
-                for (int j=0;j<n;j++) {
-                    if ((i & (1<<j)) != 0) {
-                        sb.append(j+1).append(" ");
-                    }
-                }
-                sb.append("\n");
+    private static void comb(int depth, int start) {
+        if (depth == m) {
+            for (int num : al) {
+                sb.append(num).append(" ");
             }
+            sb.append("\n");
+            return;
+        }
+
+        for(int i=start;i<=n;i++) {
+            al.add(i);
+            comb(depth+1, i+1);
+            al.remove(al.size()-1);
         }
     }
 }
