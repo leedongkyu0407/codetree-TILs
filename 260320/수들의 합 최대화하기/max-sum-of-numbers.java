@@ -5,8 +5,7 @@ public class Main {
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     private static int n, ans;
     private static int[][] board;
-    private static boolean[] xVisited, yVisited; 
-    private static int[] res;
+    private static boolean[] visited; 
 
     public static void main(String[] args) throws IOException{
         n = Integer.parseInt(bf.readLine());
@@ -18,35 +17,22 @@ public class Main {
             }
         }
         ans = 0;
-        xVisited = new boolean[n];
-        yVisited = new boolean[n];
-        res = new int[n];
-        perm(0);
+        visited = new boolean[n];
+        perm(0, 0);
         System.out.println(ans);
     }
 
-    private static void perm(int depth) {
-        if (depth == n) {
-            int temp = 0;
-            for(int i=0;i<res.length;i++) {
-                temp += res[i];
-            }
-            ans = Math.max(ans, temp);
+    private static void perm(int row, int sum) {
+        if (row == n) {
+            ans = Math.max(ans, sum);
             return;
         }
 
         for(int i=0;i<n;i++) {
-            if (xVisited[i]) continue;
-            xVisited[i] = true;
-            for(int j=0;j<n;j++) {
-                if(yVisited[j]) continue;
-                yVisited[j] = true;
-                res[depth] = board[i][j];
-                perm(depth+1);
-                yVisited[j] = false;
-                res[depth] = 0;
-            }
-            xVisited[i] = false;
+            if (visited[i]) continue;
+            visited[i] = true;
+            perm(row+1, sum+board[row][i]);
+            visited[i] = false;
         }
     }
 }
