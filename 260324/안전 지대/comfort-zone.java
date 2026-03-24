@@ -53,7 +53,7 @@ public class Main {
         maxK = 0;
         cnt = 0;
         ansCnt = 0;
-        ansK = 0;
+        ansK = 1;
         for(int i=0;i<n;i++) {
             st = new StringTokenizer(bf.readLine());
             for(int j=0;j<m;j++) {
