@@ -27,7 +27,6 @@ public class Main {
         Queue<int[]> q = new ArrayDeque<>();
         q.add(new int[]{0, 0, 0});
         boolean[][] visited = new boolean[n][m];
-        int dist = 0;
         visited[0][0] = true;
 
         while(!q.isEmpty()) {
@@ -39,7 +38,7 @@ public class Main {
             for(int[] delta: deltas) {
                 int nx = now[0]+delta[0];
                 int ny = now[1]+delta[1];
-                if (!inRange(nx, ny)) continue;
+                if (!inRange(nx, ny) || visited[nx][ny]) continue;
                 if (board[nx][ny]==0) {
                     visited[nx][ny] = true;
                     continue;
