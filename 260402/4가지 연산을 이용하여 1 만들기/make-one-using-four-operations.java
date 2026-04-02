@@ -6,27 +6,44 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         
-        if (n == 1) {
-            System.out.println(0);
-            return;
+        System.out.println(bfs(n));
+    }
+    
+    private static int bfs(int n) {
+        if (n == 1) return 0;
+        
+        Queue<Integer> q = new ArrayDeque<>();
+        Set<Integer> visited = new HashSet<>();
+        
+        q.add(n);
+        visited.add(n);
+        int steps = 0;
+        
+        while (!q.isEmpty()) {
+            int size = q.size();
+            steps++;
+            
+            for (int i = 0; i < size; i++) {
+                int now = q.poll();
+                
+                int[] next = new int[4];
+                next[0] = now - 1;                          
+                next[1] = now + 1;                          
+                next[2] = (now % 2 == 0) ? now / 2 : -1;    
+                next[3] = (now % 3 == 0) ? now / 3 : -1;    
+                
+                for (int num : next) {
+                    if (num < 1) continue;        
+                    if (visited.contains(num)) continue;  
+                    
+                    if (num == 1) return steps;   
+                    
+                    visited.add(num);
+                    q.add(num);
+                }
+            }
         }
         
-        int[] dp = new int[n + 2];  
-
-        for (int i = 2; i <= n + 1; i++) { 
-            dp[i] = dp[i - 1] + 1;
-            
-            if (i % 2 == 0) {
-                dp[i] = Math.min(dp[i], dp[i / 2] + 1);
-            }
-            
-            if (i % 3 == 0) {
-                dp[i] = Math.min(dp[i], dp[i / 3] + 1);
-            }
-        }
-
-        dp[n] = Math.min(dp[n], dp[n + 1] + 1);
-
-        System.out.println(dp[n]);
+        return -1;
     }
 }
