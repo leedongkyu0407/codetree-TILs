@@ -16,7 +16,7 @@ public class Main {
             ar[i] = Integer.parseInt(st.nextToken());
         }
 
-        dp[0] = 1;
+        Arrays.fill(dp, 1);
         for(int i=1;i<n;i++) {
             for(int j=0;j<i;j++) {
                 if (ar[j] >= ar[i]) continue;
@@ -28,6 +28,7 @@ public class Main {
         for(int i=0;i<n;i++) {
             ans = Math.max(ans, dp[i]);
         }
+
         System.out.println(ans);
     }
 }
