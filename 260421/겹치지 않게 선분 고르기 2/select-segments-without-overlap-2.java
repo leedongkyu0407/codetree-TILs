@@ -20,6 +20,10 @@ public class Main {
             }
         }
 
+        Arrays.sort(lines, (o1, o2) ->  {
+            return o1[0]-o2[0];
+        });
+
         Arrays.fill(dp, 1);
         
         for(int i=1;i<n;i++) {
