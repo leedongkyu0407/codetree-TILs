@@ -26,9 +26,10 @@ public class Main {
             Arrays.fill(dp[i], Integer.MIN_VALUE);
         }
 
-        for(int i=0;i<n;i++) {
-            dp[0][i] = 1;
-            dp[i][0] = 1;
+        dp[0][0] = 1;
+        for(int i=1;i<n;i++) {
+            dp[0][i] = 0;
+            dp[i][0] = 0;
         }
 
         for(int i=1;i<n;i++) {
