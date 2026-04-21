@@ -17,7 +17,7 @@ public class Main {
 
         for(int i=0;i<n;i++) {
             st = new StringTokenizer(bf.readLine());
-            for(int j=0;j<n;j++) {
+            for(int j=0;j<m;j++) {
                 board[i][j] = Integer.parseInt(st.nextToken());
             }
         }
@@ -27,13 +27,9 @@ public class Main {
         }
 
         dp[0][0] = 1;
-        for(int i=1;i<n;i++) {
-            dp[0][i] = 0;
-            dp[i][0] = 0;
-        }
 
         for(int i=1;i<n;i++) {
-            for(int j=1;j<n;j++) {
+            for(int j=1;j<m;j++) {
                 for(int k=0;k<i;k++) {
                     for (int l=0;l<j;l++) {
                         if (board[i][j] <= board[k][l]) continue;
@@ -45,7 +41,7 @@ public class Main {
 
         int ans = 0;
         for(int i=0;i<n;i++) {
-            for(int j=0;j<n;j++) {
+            for(int j=0;j<m;j++) {
                 ans = Math.max(dp[i][j], ans);
             }
         }
