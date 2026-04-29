@@ -29,11 +29,9 @@ public class Main {
                     dp[i][0] = Math.max(dp[j][0]+1, dp[i][0]);
                 } else if (nums[i] < nums[j]) {
                     dp[i][1] = Math.max(dp[j][1]+1, dp[i][1]);
-                    if (dp[j][2]==1) {
-                        dp[i][2] = Math.max(dp[j][0]+1, dp[i][2]);                    
-                    } else {
-                        dp[i][2] = Math.max(dp[j][2]+1, dp[i][2]);
-                    }
+
+                    dp[i][2] = Math.max(dp[j][0]+1, dp[i][2]);                                        
+                    dp[i][2] = Math.max(dp[j][2]+1, dp[i][2]);                    
                 }
             }
         }
@@ -47,4 +45,5 @@ public class Main {
 
         return answer;
     }
+
 }
