@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    
+
     private static BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     private static int n, answer;
     private static int[][] albas;
@@ -19,6 +19,8 @@ public class Main {
         }
         
         Arrays.sort(albas, (a, b) -> {
+            if(a[1] != b[1])
+                return a[1]-b[1];
             return a[0]-b[0];
         });
 
@@ -30,13 +32,16 @@ public class Main {
     }
 
     private static void solve() {
+        int maxDp = 0;
+        int ptr = 0;
+
         for(int i=0;i<n;i++) {
-            int[] now = albas[i];
-            for(int j=0;j<i;j++) {
-                int[] prev = albas[j];
-                if (now[0] <= prev[1]) continue;
-                dp[i] = Math.max(dp[j]+albas[i][2], dp[i]);
+            while(ptr < i && albas[ptr][1] < albas[i][0]) {
+                maxDp = Math.max(maxDp, dp[ptr]);
+                ptr++;
             }
+
+            dp[i] = Math.max(dp[i], maxDp+albas[i][2]);
         }
 
         for(int i=0;i<n;i++) {
