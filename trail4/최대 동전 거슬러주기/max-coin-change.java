@@ -29,7 +29,7 @@ public class Main {
                 dp[i] = Math.max(dp[i], dp[i-coins[j]]+1);
             }
         }
-        return dp[m]==0 ? -1 : dp[m];
+        return dp[m];
     }
     
     public static void main(String[] args) throws IOException{
