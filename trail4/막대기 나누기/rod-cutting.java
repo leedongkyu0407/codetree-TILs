@@ -18,20 +18,15 @@ public class Main {
         for(int i=1;i<=n;i++) {
             dp[i] = sticks[i];
         }
-        System.out.println(solve());
+        solve();
+        System.out.println(dp[n]);
     }
 
-    private static int solve() {
+    private static void solve() {
         for(int i=1;i<=n;i++) {
             for(int j=0;j<i;j++) {
                 dp[i] = Math.max(dp[i], dp[i-j]+sticks[j]);
             }
         }
-
-        int answer = 0;
-        for(int i=1;i<=n;i++) {
-            answer = Math.max(answer, dp[i]);
-        }
-        return answer;
     }
 }
