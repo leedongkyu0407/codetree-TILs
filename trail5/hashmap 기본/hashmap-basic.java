@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException{
         n = Integer.parseInt(bf.readLine());
 
+        StringBuilder sb = new StringBuilder();
         for(int i=0;i<n;i++) {
             StringTokenizer st = new StringTokenizer(bf.readLine());
             String order = st.nextToken();
@@ -21,9 +22,16 @@ public class Main {
                 hm.remove(k);
             } else if (order.equals("find")) {
                 int k = Integer.parseInt(st.nextToken());
-                System.out.println(hm.get(k)==null ? "None" : hm.get(k));
+                if(hm.get(k)==null) {
+                    sb.append("None");
+                } else {
+                    sb.append(hm.get(k));
+                }
+                sb.append("\n");
             }
+            
         }
+        System.out.println(sb.toString());
     }
 
     private static void add(int a, int b){
